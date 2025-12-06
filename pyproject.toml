@@ -1,0 +1,21 @@
+[project]
+name = "dftd-vasp"
+version = "0.1.0"
+description = "VASP plugin for using DFT-D4 and DFT-D3 dispersion corrections"
+license.file = "LICENSE"
+requires-python = ">=3.10"
+dependencies = [
+    "dftd3",
+    "dftd4",
+    "tomli",
+    "numpy>1.20",
+]
+optional-dependencies.test = [
+    "pytest",
+    "pytest-cov",
+]
+entry-points.vasp.force_and_stress = "dftd_vasp.plugin:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
