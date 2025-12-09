@@ -92,8 +92,6 @@ def main(
         )
         res = disp.get_dispersion(param=param, grad=True)
 
-    volume = abs(np.linalg.det(constants.lattice_vectors * ANGSTROM_TO_BOHR))
-
     additions.total_energy += res["energy"] * HARTREE_TO_EV
     additions.forces -= res["gradient"] * (HARTREE_TO_EV * ANGSTROM_TO_BOHR)
-    additions.stress += res["virial"] * (HARTREE_TO_EV / volume)
+    additions.stress += -res["virial"] * HARTREE_TO_EV
